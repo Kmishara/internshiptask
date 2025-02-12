@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - job_01</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-500">
+
+    <!-- ✅ Navigation -->
+    <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Job_01</h1>
+            <div class="hidden md:flex space-x-4">
+                <a href="./index.html" class="hover:underline">Home</a>
+                <a href="./jobs.html" class="hover:underline">Jobs</a>
+                <a href="./employee.html" class="hover:underline">Employers</a>
+                <a href="./blog.html" class="hover:underline">Blog</a>
+                <a href="./contact.html" class="hover:underline">Contact</a>
+            </div>
+            <button id="mobileMenuBtn" class="md:hidden text-xl">&#9776;</button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden flex flex-col text-center space-y-2 mt-2">
+            <a href="./index.html" class="hover:underline">Home</a>
+            <a href="./jobs.html" class="hover:underline">Jobs</a>
+            <a href="./employee.html" class="hover:underline">Employers</a>
+            <a href="./blog.html" class="hover:underline">Blog</a>
+            <a href="./contact.html" class="hover:underline">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ✅ Hero Section -->
+    <header class="text-center py-20 text-white">
+        <h2 class="text-4xl font-bold">Find Your Dream Job</h2>
+        <p class="mt-4 text-lg">Explore thousands of job opportunities and get hired today.</p>
+        <button id="getStartedBtn" class="mt-6 px-6 py-2 bg-white text-blue-500 font-semibold rounded hover:bg-gray-200">Find Jobs</button>
+    </header>
+
+    <!-- ✅ Search Section -->
+    <section id="searchSection" class="hidden p-6 bg-white shadow-md max-w-3xl mx-auto mt-10 rounded-lg">
+        <h3 class="text-xl font-semibold mb-4">Search Jobs</h3>
+        <form id="searchForm" action="/search" method="get" class="grid gap-4 md:flex">
+            <input type="text" id="keywordInput" placeholder="Keyword..." class="border p-2 rounded w-full md:w-auto flex-1">
+            <input type="text" id="locationInput" placeholder="Location..." class="border p-2 rounded w-full md:w-auto flex-1">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full md:w-auto">Search</button>
+        </form>
+    </section>
+
+    <!-- ✅ Job Results Section -->
+    <section id="jobResults" class="mt-6 max-w-3xl mx-auto p-4">
+        <!-- Search results will be displayed here -->
+    </section>
+
+    <!-- ✅ Toggle Search Section -->
+    <script>
+        document.getElementById("getStartedBtn").addEventListener("click", () => {
+            document.getElementById("searchSection").classList.toggle("hidden");
+        });
+
+        document.getElementById("mobileMenuBtn").addEventListener("click", () => {
+            document.getElementById("mobileMenu").classList.toggle("hidden");
+        });
+    </script>
+
+    <!-- ✅ Search Functionality -->
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent page reload
+
+            const keywordInput = document.getElementById("keywordInput");
+            const locationInput = document.getElementById("locationInput");
+            const resultsContainer = document.getElementById("jobResults");
+
+            const title = keywordInput.value.trim();
+            const location = locationInput.value.trim();
+
+            if (title.length === 0 && location.length === 0) {
+                resultsContainer.innerHTML = "<p class='text-black-500 text-center'>⚠️ Please fill at least one field.</p>";
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:8080/search?title=${title}&location=${location}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+
+                const jobs = await response.json();
+
+                resultsContainer.innerHTML = ""; // Clear previous results
+
+                if (!Array.isArray(jobs) || jobs.length === 0) {
+                    resultsContainer.innerHTML = "<p class='text-black-500 text-center'>❌ No jobs found.</p>";
+                    return;
+                }
+
+                jobs.forEach(job => {
+                    const jobElement = document.createElement("div");
+                    jobElement.classList = "p-4 bg-white shadow-md rounded mb-4";
+                    jobElement.innerHTML = `
+                        <h3 class="text-lg font-semibold">${job.title}</h3>
+                        <p class="text-gray-600">${job.company} - ${job.location}</p>
+                        <p class="text-gray-500">Salary: ${job.salary}</p>
+                        <span class="text-sm bg-blue-500 text-white px-2 py-1 rounded">${job.jobType}</span>
+                        <p class="text-gray-500">Description: ${job.description}</p>
+                    `;
+                    resultsContainer.appendChild(jobElement);
+                });
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                resultsContainer.innerHTML = "<p class='text-black-500 text-center'>🚨 Error fetching jobs.</p>";
+            }
+        });
+    </script>
+</body>
+</html>

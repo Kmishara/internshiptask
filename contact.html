@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Job _01</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Job_01</h1>
+            <button id="menu-toggle" class="md:hidden px-4">☰</button>
+            <div id="nav-links" class="hidden md:flex space-x-4">
+                <a href="./index.html" class="px-4">Home</a>
+                <a href="./jobs.html" class="px-4">Jobs</a>
+                <a href="./employee.html" class="px-4">Employers</a>
+                <a href="./blog.html" class="px-4">Blog</a>
+                <a href="./contact.html" class="px-4 font-semibold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-600 p-4 text-white">
+        <a href="./index.html" class="block py-2">Home</a>
+        <a href="./jobs.html" class="block py-2">Jobs</a>
+        <a href="./employee.html" class="block py-2">Employers</a>
+        <a href="./blog.html" class="block py-2">Blog</a>
+        <a href="./contact.html" class="block py-2 font-semibold">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="bg-blue-500 text-white py-16 text-center px-4">
+        <h2 class="text-4xl font-bold">Get in Touch</h2>
+        <p class="text-lg mt-2">We're here to help! Contact us for any queries.</p>
+    </header>
+
+    <!-- Contact Form & Info -->
+    <section class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Contact Form -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Send Us a Message</h3>
+                <form id="contactForm" class="space-y-4">
+                    <input type="text" id="name" placeholder="Your Name" class="border p-2 w-full rounded">
+                    <input type="email" id="email" placeholder="Your Email" class="border p-2 w-full rounded">
+                    <textarea id="message" placeholder="Your Message" class="border p-2 w-full rounded"></textarea>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Send Message</button>
+                </form>
+                <p id="formMessage" class="mt-2 text-green-500 hidden">Message sent successfully!</p>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                <p><strong>Email:</strong> job_01@gmail.com</p>
+                <p><strong>Phone:</strong> +91 234 567 890</p>
+                <p><strong>Address:</strong> India</p>
+
+                <!-- Google Maps -->
+                <div class="mt-4">
+                    <iframe class="w-full h-56 rounded" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509607!2d144.95592301566725!3d-37.81720997975165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df2a1d0f5%3A0x505c92f4ce3d40f0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1622487504885!5m2!1sen!2sin" 
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+
+        // Contact Form Submission
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+                alert("Please fill all fields before submitting.");
+                return;
+            }
+
+            // Show success message
+            document.getElementById("formMessage").classList.remove("hidden");
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>

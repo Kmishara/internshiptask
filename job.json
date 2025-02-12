@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "title": "Software Engineer",
+      "company": "Tech Innovators",
+      "location": "San Francisco, CA",
+      "salary": "$120,000 - $140,000",
+      "jobType": "Full-time",
+      "description": "Looking for a skilled Software Engineer with experience in JavaScript, React, and Node.js."
+    },
+    {
+      "id": 2,
+      "title": "Frontend Developer",
+      "company": "Creative Designs Ltd.",
+      "location": "New York, NY",
+      "salary": "$90,000 - $110,000",
+      "jobType": "Remote",
+      "description": "Seeking a Frontend Developer with expertise in HTML, CSS, and TailwindCSS."
+    },
+    {
+      "id": 3,
+      "title": "Data Analyst",
+      "company": "Data Insights Inc.",
+      "location": "Chicago, IL",
+      "salary": "$80,000 - $100,000",
+      "jobType": "Full-time",
+      "description": "Hiring a Data Analyst skilled in Python, SQL, and Power BI."
+    },
+    {
+      "id": 4,
+      "title": "Product Manager",
+      "company": "NextGen Solutions",
+      "location": "Austin, TX",
+      "salary": "$100,000 - $130,000",
+      "jobType": "Hybrid",
+      "description": "Experienced Product Manager needed to lead innovative projects."
+    },
+    {
+      "id": 5,
+      "title": "UI/UX Designer",
+      "company": "Pixel Perfect",
+      "location": "Los Angeles, CA",
+      "salary": "$75,000 - $95,000",
+      "jobType": "Freelance",
+      "description": "Creative UI/UX Designer with proficiency in Figma and Adobe XD."
+    }
+  ]
+  
