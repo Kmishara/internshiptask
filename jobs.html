@@ -8,36 +8,30 @@
 </head>
 <body class="bg-blue-500">
 
-    <!-- ✅ Navigation -->
+    <!-- Navigation -->
     <nav class="bg-blue-600 p-4 text-white">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">Job_01</h1>
-            <div class="hidden md:flex space-x-4">
-                <a href="./index.html" class="hover:underline">Home</a>
-                <a href="./jobs.html" class="hover:underline">Jobs</a>
-                <a href="./employee.html" class="hover:underline">Employers</a>
-                <a href="./blog.html" class="hover:underline">Blog</a>
-                <a href="./contact.html" class="hover:underline">Contact</a>
+            <div class=" md:flex space-x-4">
+                <a href="./index.html" >Home</a>
+                <a href="./jobs.html" >Jobs</a>
+                <a href="./employee.html" >Employers</a>
+                <a href="./blog.html" >Blog</a>
+                <a href="./contact.html" >Contact</a>
             </div>
-            <button id="mobileMenuBtn" class="md:hidden text-xl">&#9776;</button>
+            
         </div>
-        <div id="mobileMenu" class="hidden md:hidden flex flex-col text-center space-y-2 mt-2">
-            <a href="./index.html" class="hover:underline">Home</a>
-            <a href="./jobs.html" class="hover:underline">Jobs</a>
-            <a href="./employee.html" class="hover:underline">Employers</a>
-            <a href="./blog.html" class="hover:underline">Blog</a>
-            <a href="./contact.html" class="hover:underline">Contact</a>
-        </div>
+        
     </nav>
 
-    <!-- ✅ Hero Section -->
+    <!-- Hero Section -->
     <header class="text-center py-20 text-white">
         <h2 class="text-4xl font-bold">Find Your Dream Job</h2>
         <p class="mt-4 text-lg">Explore thousands of job opportunities and get hired today.</p>
         <button id="getStartedBtn" class="mt-6 px-6 py-2 bg-white text-blue-500 font-semibold rounded hover:bg-gray-200">Find Jobs</button>
     </header>
 
-    <!-- ✅ Search Section -->
+    <!-- Search Section -->
     <section id="searchSection" class="hidden p-6 bg-white shadow-md max-w-3xl mx-auto mt-10 rounded-lg">
         <h3 class="text-xl font-semibold mb-4">Search Jobs</h3>
         <form id="searchForm" action="/search" method="get" class="grid gap-4 md:flex">
@@ -47,12 +41,12 @@
         </form>
     </section>
 
-    <!-- ✅ Job Results Section -->
+    <!-- Job Results Section -->
     <section id="jobResults" class="mt-6 max-w-3xl mx-auto p-4">
         <!-- Search results will be displayed here -->
     </section>
 
-    <!-- ✅ Toggle Search Section -->
+    <!-- Toggle Search Section -->
     <script>
         document.getElementById("getStartedBtn").addEventListener("click", () => {
             document.getElementById("searchSection").classList.toggle("hidden");
@@ -63,7 +57,7 @@
         });
     </script>
 
-    <!-- ✅ Search Functionality -->
+    <!-- Search Functionality -->
     <script>
         document.getElementById("searchForm").addEventListener("submit", async function(event) {
             event.preventDefault(); // Prevent page reload

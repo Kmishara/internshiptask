@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Job_01</title>
+    <title>Blog - Job _01</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
 
     <!-- Navigation -->
     <nav class="bg-blue-600 p-4 text-white">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Job_01</h1>
-            <button id="menuToggle" class="md:hidden text-white text-2xl">&#9776;</button>
-            <div id="navLinks" class="hidden md:flex space-x-4">
+        <div class="container mx-auto flex justify-between">
+            <h1 class="text-2xl font-bold">Job Portal</h1>
+            <div>
                 <a href="./index.html" class="px-4">Home</a>
                 <a href="./jobs.html" class="px-4">Jobs</a>
                 <a href="./employee.html" class="px-4">Employers</a>
@@ -23,47 +22,33 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden bg-blue-700 text-white p-4 space-y-2 md:hidden">
-        <a href="./index.html" class="block">Home</a>
-        <a href="./jobs.html" class="block">Jobs</a>
-        <a href="./employee.html" class="block">Employers</a>
-        <a href="./blog.html" class="block font-semibold">Blog</a>
-        <a href="./contact.html" class="block">Contact</a>
-    </div>
-
-    <!-- Hero Section -->
-    <header class="bg-blue-500 text-white py-16 text-center px-6">
+    <!--  Hero Section -->
+    <header class="bg-blue-500 text-white py-16 text-center">
         <h2 class="text-4xl font-bold">Career Advice & Job Tips</h2>
         <p class="text-lg mt-2">Explore the latest career guides and job market insights.</p>
     </header>
 
-    <!-- Blog Listing Section -->
+    <!--  Blog Listing Section -->
     <section class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h3 class="text-2xl font-bold mb-4 text-center">Latest Blogs</h3>
-        <div id="blogList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Blogs will be loaded dynamically -->
+        <h3 class="text-2xl font-bold mb-4">Latest Blogs</h3>
+        <div id="blogList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Blogs will be loaded dynamically here -->
         </div>
     </section>
 
-    <!-- Add New Blog Form -->
+    <!--  Add New Blog Form -->
     <section class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h3 class="text-2xl font-bold mb-4 text-center">Submit a Blog</h3>
+        <h3 class="text-2xl font-bold mb-4">Submit a Blog</h3>
         <form id="blogForm" class="space-y-4">
-            <input type="text" id="blogTitle" placeholder="Blog Title" class="border p-3 w-full rounded">
-            <input type="text" id="blogAuthor" placeholder="Author Name" class="border p-3 w-full rounded">
-            <textarea id="blogContent" placeholder="Blog Content" class="border p-3 w-full rounded"></textarea>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto">Submit Blog</button>
+            <input type="text" id="blogTitle" placeholder="Blog Title" class="border p-2 w-full rounded">
+            <input type="text" id="blogAuthor" placeholder="Author Name" class="border p-2 w-full rounded">
+            <textarea id="blogContent" placeholder="Blog Content" class="border p-2 w-full rounded"></textarea>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit Blog</button>
         </form>
-        <p id="blogMessage" class="mt-2 text-green-500 hidden text-center">Blog submitted successfully!</p>
+        <p id="blogMessage" class="mt-2 text-green-500 hidden">Blog submitted successfully!</p>
     </section>
 
     <script>
-        // Toggle Mobile Menu
-        document.getElementById("menuToggle").addEventListener("click", function () {
-            document.getElementById("mobileMenu").classList.toggle("hidden");
-        });
-
         // Dummy Blog Data
         const blogs = [
             { title: "How to Ace Your Next Job Interview", author: "John Doe", content: "Tips and tricks to prepare for interviews and impress hiring managers." },
@@ -73,12 +58,12 @@
         ];
 
         // Load Blogs into Page
+        const blogList = document.getElementById("blogList");
         function loadBlogs() {
-            const blogList = document.getElementById("blogList");
             blogList.innerHTML = "";
             blogs.forEach(blog => {
                 const blogCard = document.createElement("div");
-                blogCard.classList = "p-4 bg-gray-100 shadow-md rounded text-center";
+                blogCard.classList = "p-4 bg-gray-100 shadow-md rounded";
                 blogCard.innerHTML = `
                     <h4 class="text-lg font-semibold">${blog.title}</h4>
                     <p class="text-gray-600">By ${blog.author}</p>
@@ -89,7 +74,7 @@
         }
         loadBlogs();
 
-        // Handle Blog Submission
+        //  Handle New Blog Submission
         document.getElementById("blogForm").addEventListener("submit", function(event) {
             event.preventDefault();
             

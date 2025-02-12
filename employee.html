@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,9 @@
 
     <!-- Navigation -->
     <nav class="bg-blue-600 p-4 text-white">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Job_01</h1>
-            <button id="menuToggle" class="md:hidden text-white text-2xl">&#9776;</button>
-            <div id="navLinks" class="hidden md:flex md:items-center space-x-4">
+        <div class="container mx-auto flex justify-between">
+            <h1 class=" font-bold">Job Portal</h1>
+            <div>
                 <a href="./index.html" class="px-4">Home</a>
                 <a href="./jobs.html" class="px-4">Jobs</a>
                 <a href="./employee.html" class="px-4">Employers</a>
@@ -23,92 +23,77 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden bg-blue-700 text-white p-4 space-y-2 md:hidden">
-        <a href="./index.html" class="block">Home</a>
-        <a href="./jobs.html" class="block">Jobs</a>
-        <a href="./employee.html" class="block">Employers</a>
-        <a href="./blog.html" class="block font-semibold">Blog</a>
-        <a href="./contact.html" class="block">Contact</a>
-    </div>
-
     <!-- Hero Section -->
-    <header class="bg-blue-500 text-white py-16 text-center px-6">
+    <header class="bg-blue-500 text-white py-16 text-center">
         <h2 class="text-4xl font-bold">Hire the Best Talent</h2>
         <p class="text-lg mt-2">Post jobs, find candidates, and grow your business.</p>
         <a href="#postJobForm" class="mt-4 inline-block bg-white text-blue-500 px-6 py-2 rounded font-semibold">Post a Job</a>
     </header>
 
-    <!-- Employers Section -->
+   
     <section class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h3 class="text-2xl font-bold mb-4 text-center">Top Hiring Companies</h3>
-        <div id="employersList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Employers will be loaded dynamically -->
+        <h3 class="text-2xl font-bold mb-4">Top Hiring Companies</h3>
+        <div id="employersList" class="grid grid-cols-6 md:grid-cols-3 gap-6">
+             <!-- Employers will be loaded here dynamically  -->
         </div>
     </section>
 
-    <!-- Job Posting Form -->
+    <!--Add New job Form -->
     <section id="postJobForm" class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h3 class="text-2xl font-bold mb-4 text-center">Post a Job</h3>
+        <h3 class="text-2xl font-bold mb-4">Post a Job</h3>
         <form id="jobPostForm" class="space-y-4">
-            <input type="text" id="companyName" placeholder="Company Name" class="border p-3 w-full rounded">
-            <input type="text" id="jobTitle" placeholder="Job Title" class="border p-3 w-full rounded">
-            <input type="text" id="location" placeholder="Location" class="border p-3 w-full rounded">
-            <input type="file" name="image" id="image" class="border p-3 w-full rounded">
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full md:w-auto">Post Job</button>
+            <input type="text" id="companyName" placeholder="Company Name" class="border p-2 w-full rounded">
+            <input type="text" id="jobTitle" placeholder="Job Title" class="border p-2 w-full rounded">
+            <input type="text" id="location" placeholder="Location" class="border p-2 w-full rounded">
+           <input type="file" name="image" id="image">
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Post Job</button>
         </form>
-        <p id="jobPostMessage" class="mt-2 text-green-500 hidden text-center">Job posted successfully!</p>
+        <p id="jobPostMessage" class="mt-2 text-green-500 hidden">Job posted successfully!</p>
     </section>
 
     <script>
-        // Toggle Mobile Menu
-        document.getElementById("menuToggle").addEventListener("click", function () {
-            document.getElementById("mobileMenu").classList.toggle("hidden");
-        });
-
-        // Dummy Employer Data
+        // Dummy job Data
         const employers = [
-            { companyName: "Google", location: "California, USA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6HMrE7xvKu5-UahOPBs3GcE4AZJk8LsX7tg&s", jobTitle: "Full Stack Developer" },
-            { companyName: "Microsoft", location: "Redmond, USA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeka2tVg6P5aT96Mm1ZhEKwMowEqQcL6JEwQ&s", jobTitle: "Software Engineer" },
-            { companyName: "Amazon", location: "Seattle, USA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVHnOHxw4UwNMQR2hJIWYINqMOf85mCDDWw&s", jobTitle: "Cloud Engineer" },
-            { companyName: "Facebook", location: "Menlo Park, USA", image: "https://png.pngtree.com/png-clipart/20180515/ourmid/pngtree-facebook-icon-png-image_3566125.png", jobTitle: "Data Scientist" },
-            { companyName: "Tesla", location: "Texas, USA", image: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png", jobTitle: "Electrical Engineer" },
+            { companyName: "Google", location: "California, USA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6HMrE7xvKu5-UahOPBs3GcE4AZJk8LsX7tg&s",jobTitle:"Full Stack developer" },
+            { companyName: "Microsoft", location: "Redmond, USA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeka2tVg6P5aT96Mm1ZhEKwMowEqQcL6JEwQ&s",jobTitle:"Full Stack developer" },
+            { companyName: "Amazon", location: "Seattle, USA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVHnOHxw4UwNMQR2hJIWYINqMOf85mCDDWw&s",jobTitle:"Full Stack developer" },
+            { companyName: "Facebook", location: "Menlo Park, USA", image: "https://png.pngtree.com/png-clipart/20180515/ourmid/pngtree-facebook-icon-png-image_3566125.png",jobTitle:"Full Stack developer" },
+            { companyName: "Tesla", location: "Texas, USA", image: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",jobTitle:"Full Stack developer" },
         ];
-
-        // Load Employers into Page
-        function loadEmployers() {
-            const employersList = document.getElementById("employersList");
+        // Load jobs into Page
+        const employersList = document.getElementById("employersList");
+        function loadEmp() {
             employersList.innerHTML = "";
             employers.forEach(emp => {
                 const empCard = document.createElement("div");
                 empCard.classList = "p-4 bg-gray-100 shadow-md rounded text-center";
                 empCard.innerHTML = `
                     <img src="${emp.image}" class="mx-auto mb-2 w-16 h-16 rounded-full">
-                    <h4 class="text-lg font-semibold">${emp.companyName}</h4>
-                    <p class="text-gray-600">${emp.location}</p>
-                    <p class="text-gray-600">${emp.jobTitle}</p>
+                <h4 class="text-lg font-semibold">${emp.companyName}</h4>
+                <p class="text-gray-600">${emp.location}</p>
+                <p class="text-gray-600">${emp.jobTitle}</p>
                 `;
                 employersList.appendChild(empCard);
             });
         }
-        loadEmployers();
+        loadEmp();
 
-        // Handle Job Submission
-        document.getElementById("jobPostForm").addEventListener("submit", function (event) {
+        //  Handle New jobs Submission
+        document.getElementById("jobPostForm").addEventListener("submit", function(event) {
             event.preventDefault();
             
             const jobTitle = document.getElementById("jobTitle").value.trim();
             const companyName = document.getElementById("companyName").value.trim();
             const location = document.getElementById("location").value.trim();
             const image = document.getElementById("image").value.trim();
-
-            if (!jobTitle || !companyName || !location || !image) {
+            if (!jobTitle || !companyName || !location || !image ) {
                 alert("Please fill all fields before posting a job.");
                 return;
             }
 
-            employers.unshift({ jobTitle, companyName, location, image });
-            loadEmployers();
+            emp.unshift({ jobTitle, companyName, location, image});
+            loadEmp();
             document.getElementById("jobPostMessage").classList.remove("hidden");
             this.reset();
         });
